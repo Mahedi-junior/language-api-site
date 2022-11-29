@@ -1,30 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Dropdown } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
 import axios from "axios";
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
 const Language = () => {
-  //   const url = "https://csify.selubi.dev/csify";
-  //   const r =await axios.post(url,{});
-  const callLanguage = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      base_sentence:
-        "Hi, I'm an international student in Japan. Call me Bryan or Selubi, whichever you prefer.",
-      base_language: "en",
-      inserted_language: "ja",
-    }),
-  };
-
-  useEffect(() => {
-    fetch("https://csify.selubi.dev/csify/", callLanguage)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
-
-  const language = useLoaderData();
-  console.log(language);
+  const [selects, setSelects] = useState("");
 
   const handleText = () => {
     const text = document.getElementById("textField");
@@ -41,21 +22,18 @@ const Language = () => {
           Input TextBox (Editable)
         </h3>
         <div className="d-flex mt-5 px-3 align-items-center justify-content-between">
-          <div className="">
+          <div>
             <p className="fs-4">Base Language</p>
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="secondary border px-5 py-3 fs-5 fw-semibold"
-                id="dropdown-basic "
-              >
-                Select Language
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">English</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Japan </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            {/* <h2>{selects}</h2> */}
+            <select
+              className="secondary border px-5 py-3 fs-5 fw-semibold"
+              value={selects}
+              onChange={(e) => setSelects(e.target.value)}
+            >
+              <option>English</option>
+              <option>Japan</option>
+              <option>বাংলা</option>
+            </select>
           </div>
 
           <div className="bg-inf w-50 py-3">

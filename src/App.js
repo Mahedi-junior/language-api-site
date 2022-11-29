@@ -21,9 +21,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/language",
-        loader: async () => {
-          return fetch("https://jsonplaceholder.typicode.com/users");
-        },
         element: <Language></Language>,
       },
       {
