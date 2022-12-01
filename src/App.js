@@ -5,6 +5,9 @@ import Main from "./layout/Main";
 import About from "./components/About/About";
 import Home from "./components/Home/Home";
 import Language from "./components/Language/Language";
+import Portfolio from "./components/Portfolio";
+import Csify from "./components/Csify";
+import Blog from "./components/Blog";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +21,18 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home></Home>,
+      },
+      {
+        path: "/portfolio",
+        element: <Portfolio></Portfolio>,
+      },
+      {
+        path: "/csify",
+        element: <Csify></Csify>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
         path: "/language",
